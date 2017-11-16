@@ -8,13 +8,13 @@ var casper = require("casper").create({
   }
 });
 
-var outputfilename = "scraped_data/"+casper.cli.get(0) + ".txt";
+var outputfilename = "scraped_data/"+casper.cli.get(0) + ".json";
 
 
 
 var stream = fs.open(outputfilename,"w");
 var title;
-var url = "http://twitter.com/"+casper.cli.get(0);
+var url = "http://twitter.com/"+casper.cli.get(0)+"/media";
 
 casper.start(url, function() {
   this.echo(this.getTitle());
