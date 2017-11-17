@@ -8,13 +8,15 @@ var casper = require("casper").create({
   }
 });
 
-var outputfilename = "scraped_data/"+casper.cli.get(0) + ".json";
+var usuarioTwitter = casper.cli.get(0).replace(/(\n|\r)+$/, '');
+var outputfilename = "scraped_data/"+ usuarioTwitter + ".json";
 
 
 
 var stream = fs.open(outputfilename,"w");
 var title;
-var url = "http://twitter.com/"+casper.cli.get(0)+"/media";
+
+var url = "http://twitter.com/"+ usuarioTwitter +"/media";
 
 casper.start(url, function() {
   this.echo(this.getTitle());
@@ -33,6 +35,7 @@ casper.on('results.log', function() {
     var elementos = this.getElementsInfo('.AdaptiveMedia-photoContainer');
     var item = [];
     var data = {};
+    var images = {};
     for(index in elementos){
       var obj = elementos[index].attributes;
       this.echo(obj["data-image-url"]);
@@ -40,8 +43,8 @@ casper.on('results.log', function() {
       item.push(obj["data-image-url"]);
       
     }
-
-    data[casper.cli.get(0)] = item;
+    images["images"] = item;
+    data[usuarioTwitter] = images;
     stream.writeLine(JSON.stringify(data));
     
 });
