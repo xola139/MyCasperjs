@@ -3,6 +3,8 @@
 //https://stackoverflow.com/questions/6831918/node-js-read-a-text-file-into-an-array-each-line-an-item-in-the-array
 //http://blog.koalite.com/2011/10/javascript-diferencias-entre-declaracion-de-funcion-y-expresion-con-funcion/
 //http://www.etnassoft.com/2011/09/02/funciones-declaradas-vs-funciones-expresadas-en-javascript/
+//https://github.com/tanejamohit/Parsing-Alert/tree/master/node_modules/mongodb
+//http://www.nikola-breznjak.com/blog/javascript/nodejs/using-casperjs-on-webfaction-to-automatically-send-emails-with-attached-images-via-gmail/
 
 
 var MongoClient = require('mongodb').MongoClient;
